@@ -32,8 +32,11 @@ def about(request):
 def services(request):
     return render(request, 'services.html')
 
-def resume(request):
-    return render(request, 'resume.html')
+def experience(request):
+    return render(request, 'experience.html')
+
+def projects(request):
+    return render(request, 'projects.html')
 
 def blogs(request):
     return render(request, 'blogs.html')
@@ -52,13 +55,6 @@ def skill_list(request):
     skills = Skill.objects.all()
 
     return render(request, 'skills.html', {'skills': skills})
-
-
-def project_list(request):
-    projects = Project.objects.all()
-
-    return render(request, 'projects.html', {'projects': projects})
-
 
 def experience_list(request):
     experiences = Experience.objects.all()
