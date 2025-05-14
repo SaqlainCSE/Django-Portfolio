@@ -24,40 +24,35 @@
                                     <div class="col-md-8">
                                         <h2 class="fs-2 fw-normal lh-1 text-dark mb-3">Get in touch !</h2>
                                         <p class="text-gray-700 fs-18 fs-lg mb-4 mb-md-5 ">Always available for freelancing if the right project <br> comes along, Feel free to contact me.</p>
-                                        <form method="post" name="myForm" onsubmit="return validateForm()">
-                                            <span id="error-msg"></span>
-                                            <div class="row">
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="fw-medium form-label fs-16" for="name">Name</label>
-                                                    <input type="text" class="form-control" placeholder="Your name" id="name" />
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="fw-medium form-label  fs-16" for="email">Email</label>
-                                                    <input type="email" class="form-control" placeholder="Your email" id="email" />
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="fw-medium form-label  fs-16" for="subject">Subject</label>
-                                                    <input type="text" class="form-control" placeholder="your subject" id="subject" />
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-md-6 mb-3">
-                                                    <label class="fw-medium form-label  fs-16" for="number">Contact</label>
-                                                    <input type="text" class="form-control" placeholder="+880-1688-496756" id="number" />
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-12 mb-3">
-                                                    <label class="fw-medium form-label  fs-16" for="comments">Message</label>
-                                                    <textarea class="form-control" id="comments" placeholder="Enter your message..." rows="5"></textarea>
-                                                </div>
-                                                <!-- end col -->
-                                                <div class="col-12">
-                                                    <input type="submit" id="submit" name="send" class="btn btn-primary mt-2" value="Send message" />
-                                                </div>
-                                                <!-- end col -->
-                                            </div><!--end row-->
-                                        </form><!-- end form -->
+                                        <form method="post" name="myForm" onsubmit="return sendWhatsAppMessage(event)">
+                                        <span id="error-msg" style="color:red;"></span>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="fw-medium form-label fs-16" for="name">Name</label>
+                                                <input type="text" class="form-control" placeholder="Your name" id="name" required />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="fw-medium form-label fs-16" for="email">Email</label>
+                                                <input type="email" class="form-control" placeholder="Your email" id="email" required />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="fw-medium form-label fs-16" for="subject">Subject</label>
+                                                <input type="text" class="form-control" placeholder="Your subject" id="subject" required />
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label class="fw-medium form-label fs-16" for="number">Contact</label>
+                                                <input type="text" class="form-control" placeholder="+8801688496756" id="number" required />
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label class="fw-medium form-label fs-16" for="comments">Message</label>
+                                                <textarea class="form-control" id="comments" placeholder="Enter your message..." rows="5" required></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <input type="submit" id="submit" class="btn btn-primary mt-2" value="Send Message" />
+                                            </div>
+                                        </div>
+                                    </form>
+
                                     </div><!-- end col -->
                                     <div class="col-md-4">
                                         <img src="{% static 'images/personal/contact.svg' %}" alt="" height="200" class=" mx-auto d-block mb-5">
@@ -66,7 +61,7 @@
                                                 <i class="ti ti-phone fs-22"></i>
                                             </div>
                                             <div class="align-self-center ms-3">
-                                                <span class="d-block lh-1">+880-1688-496756</span>
+                                                <span class="d-block lh-1">+8801688496756</span>
                                             </div>
                                         </div><br>
                                         
@@ -78,6 +73,16 @@
                                                 <span class="d-block lh-1">saqlaincse@gmail.com</span>
                                             </div>
                                         </div>
+
+                                        <!-- Google Map Start -->
+                                        <div class="container-xxl pt-5 px-0 wow fadeIn" data-wow-delay="0.1s">
+                                            <iframe class="w-100 mb-n2" style="height: 250px;"
+                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748806.520555356!2d85.32969164331168!3d23.426394779066474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30adaaed80e18ba7%3A0xf2d28e0c4e1fc6b!2sBangladesh!5e0!3m2!1sen!2sbd!4v1726067975347!5m2!1sen!2sbd"
+                                                frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
+                                            </iframe>
+                                        </div>
+                                        <!-- Google Map End -->
+
                                     </div><!--end col-->
                                 </div><!-- end row -->  
                             </div><!--end card-body-->
@@ -99,5 +104,41 @@
     </body>
 
 </html>
+
+<script>
+function sendWhatsAppMessage(event) {
+    event.preventDefault(); // Prevent form from submitting normally
+
+    // Get form values
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let subject = document.getElementById("subject").value.trim();
+    let number = document.getElementById("number").value.trim();
+    let message = document.getElementById("comments").value.trim();
+
+    // Error message element
+    let errorMsg = document.getElementById("error-msg");
+
+    // Validation
+    if (!name || !email || !subject || !number || !message) {
+        errorMsg.innerText = "Please fill in all fields.";
+        return false;
+    }
+
+    // WhatsApp message format
+    let whatsappMessage = `*Portfolio Website Message*\n\nName: ${name}\nEmail: ${email}\nContact: ${number}\nSubject: ${subject}\nMessage: ${message}`;
+    let phoneNumber = "8801688496756"; // Without '+'
+
+    // Create WhatsApp URL and open in new tab
+    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(url, '_blank');
+
+    // Clear form after sending
+    document.forms["myForm"].reset();
+    errorMsg.innerText = ""; // Clear error if any
+
+    return false;
+}
+</script>
 
 {% endblock %}

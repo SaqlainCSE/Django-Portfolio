@@ -11,14 +11,14 @@ def dd(data):
     sys.exit()
 
 def home(request):
-    profile = Profile.objects.first()
+    about = Profile.objects.first()
     skills = Skill.objects.all()
     projects = Project.objects.all()
     experiences = Experience.objects.all()
     educations = Education.objects.all()
     
     return render(request, 'home.html', {
-        'profile': profile,
+        'about': about,
         'skills': skills,
         'projects': projects,
         'experiences': experiences,
@@ -27,7 +27,9 @@ def home(request):
     
     
 def about(request):
-    return render(request, 'about.html')
+    about = Profile.objects.first()
+    skills = Skill.objects.all()
+    return render(request, 'about.html', {'about': about, 'skills': skills})
 
 def services(request):
     return render(request, 'services.html')

@@ -4,10 +4,10 @@ from .models import Profile, Skill, Project, Experience, Education, Message
 # Register your models here.
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'title', 'bio', 'email', 'phone', 'address', 'profile_image', 'resume', 'created_at', 'updated_at')
+    list_display = ('full_name', 'title', 'bio', 'email', 'phone', 'address', 'profile_image', 'profile_image2', 'dob', 'nationality', 'languages', 'github_link', 'instagram_link', 'linkedin_link', 'resume', 'created_at', 'updated_at')
 
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'level', 'created_at', 'updated_at')
+    list_display = ('name', 'experience', 'logo', 'created_at', 'updated_at')
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'image', 'demo_link', 'source_code', 'created_at', 'updated_at')

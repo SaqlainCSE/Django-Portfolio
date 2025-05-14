@@ -10,7 +10,14 @@ class Profile(models.Model):
     phone = models.CharField(max_length=20, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     profile_image = models.ImageField(upload_to='profile/', blank=True, null=True)
+    profile_image2 = models.ImageField(upload_to='profile/', blank=True, null=True)
     resume = models.FileField(upload_to='resumes/', blank=True, null=True)
+    dob = models.DateField(blank=True, null=True)
+    nationality = models.CharField(max_length=100,blank=True, null=True)
+    languages = models.CharField(max_length=100,blank=True, null=True)
+    github_link = models.URLField(blank=True, null=True)
+    linkedin_link = models.URLField(blank=True, null=True)
+    instagram_link = models.URLField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -18,9 +25,9 @@ class Profile(models.Model):
         return self.full_name
 
 class Skill(models.Model):
-    profile = models.ForeignKey(Profile, related_name='skills', on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    level = models.CharField(max_length=50)
+    experience = models.CharField(max_length=100,blank=True, null=True)
+    logo = models.FileField(upload_to='skills/',blank=True, null=True)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
 
