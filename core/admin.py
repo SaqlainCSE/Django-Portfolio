@@ -19,7 +19,7 @@ class EducationAdmin(admin.ModelAdmin):
     list_display = ('institution', 'degree', 'start_year', 'end_year', 'description', 'created_at', 'updated_at')
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'subject', 'message', 'created_at', 'updated_at')
+    list_display = ('name', 'email', 'number', 'subject', 'message', 'created_at', 'updated_at')
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Skill, SkillAdmin)

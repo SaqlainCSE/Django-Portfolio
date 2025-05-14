@@ -24,34 +24,35 @@
                                     <div class="col-md-8">
                                         <h2 class="fs-2 fw-normal lh-1 text-dark mb-3">Get in touch !</h2>
                                         <p class="text-gray-700 fs-18 fs-lg mb-4 mb-md-5 ">Always available for freelancing if the right project <br> comes along, Feel free to contact me.</p>
-                                        <form method="post" name="myForm" onsubmit="return sendWhatsAppMessage(event)">
-                                        <span id="error-msg" style="color:red;"></span>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label class="fw-medium form-label fs-16" for="name">Name</label>
-                                                <input type="text" class="form-control" placeholder="Your name" id="name" required />
+                                        <form method="post" name="myForm" id="contactForm">
+                                            {% csrf_token %}
+                                            <span id="error-msg" style="color:red;"></span>
+                                            <div class="row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="fw-medium form-label fs-16" for="name">Name</label>
+                                                    <input type="text" class="form-control" placeholder="Your name" id="name" name="name" required />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="fw-medium form-label fs-16" for="email">Email</label>
+                                                    <input type="email" class="form-control" placeholder="Your email" id="email" name="email" required />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="fw-medium form-label fs-16" for="subject">Subject</label>
+                                                    <input type="text" class="form-control" placeholder="Your subject" id="subject" name="subject" required />
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label class="fw-medium form-label fs-16" for="number">Contact</label>
+                                                    <input type="text" class="form-control" placeholder="+8801688496756" id="number" name="number" required />
+                                                </div>
+                                                <div class="col-12 mb-3">
+                                                    <label class="fw-medium form-label fs-16" for="message">Message</label>
+                                                    <textarea class="form-control" id="message" name="message" placeholder="Enter your message..." rows="5" required></textarea>
+                                                </div>
+                                                <div class="col-12">
+                                                    <input type="submit" id="submit" class="btn btn-primary mt-2" value="Send Message" />
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label class="fw-medium form-label fs-16" for="email">Email</label>
-                                                <input type="email" class="form-control" placeholder="Your email" id="email" required />
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label class="fw-medium form-label fs-16" for="subject">Subject</label>
-                                                <input type="text" class="form-control" placeholder="Your subject" id="subject" required />
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label class="fw-medium form-label fs-16" for="number">Contact</label>
-                                                <input type="text" class="form-control" placeholder="+8801688496756" id="number" required />
-                                            </div>
-                                            <div class="col-12 mb-3">
-                                                <label class="fw-medium form-label fs-16" for="comments">Message</label>
-                                                <textarea class="form-control" id="comments" placeholder="Enter your message..." rows="5" required></textarea>
-                                            </div>
-                                            <div class="col-12">
-                                                <input type="submit" id="submit" class="btn btn-primary mt-2" value="Send Message" />
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
 
                                     </div><!-- end col -->
                                     <div class="col-md-4">
@@ -106,39 +107,55 @@
 </html>
 
 <script>
-function sendWhatsAppMessage(event) {
-    event.preventDefault(); // Prevent form from submitting normally
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submit
 
-    // Get form values
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let subject = document.getElementById("subject").value.trim();
-    let number = document.getElementById("number").value.trim();
-    let message = document.getElementById("comments").value.trim();
-
-    // Error message element
+    let form = event.target;
     let errorMsg = document.getElementById("error-msg");
 
-    // Validation
+    let name = form.name.value.trim();
+    let email = form.email.value.trim();
+    let subject = form.subject.value.trim();
+    let number = form.number.value.trim();
+    let message = form.message.value.trim();
+
     if (!name || !email || !subject || !number || !message) {
         errorMsg.innerText = "Please fill in all fields.";
-        return false;
+        return;
     }
 
-    // WhatsApp message format
-    let whatsappMessage = `*Portfolio Website Message*\n\nName: ${name}\nEmail: ${email}\nContact: ${number}\nSubject: ${subject}\nMessage: ${message}`;
-    let phoneNumber = "8801688496756"; // Without '+'
+    // Send form to Django using fetch (AJAX)
+    let formData = new FormData(form);
 
-    // Create WhatsApp URL and open in new tab
-    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(url, '_blank');
+    fetch("", {
+        method: "POST",
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Open WhatsApp in new tab
+            let whatsappMessage = `*Portfolio Website Message*\n\nName: ${name}\nEmail: ${email}\nContact: ${number}\nSubject: ${subject}\nMessage: ${message}`;
+            let phoneNumber = "8801688496756";
+            let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(url, '_blank');
 
-    // Clear form after sending
-    document.forms["myForm"].reset();
-    errorMsg.innerText = ""; // Clear error if any
-
-    return false;
-}
+            // Clear form
+            form.reset();
+            errorMsg.innerText = "";
+        } else {
+            errorMsg.innerText = "Failed to send message.";
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        errorMsg.innerText = "An error occurred.";
+    });
+});
 </script>
+
 
 {% endblock %}

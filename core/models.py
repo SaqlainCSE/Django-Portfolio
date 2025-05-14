@@ -62,10 +62,14 @@ class Education(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Message(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
+    name = models.CharField(max_length=100, verbose_name="Full Name")
+    email = models.EmailField(verbose_name="Email Address")
+    number = models.CharField(max_length=20, verbose_name="Contact Number", blank=True, null=True)
     subject = models.CharField(max_length=200)
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Sent At")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Last Updated")
+
+    def __str__(self):
+        return f"Message from {self.name} - {self.subject}"
 

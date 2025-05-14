@@ -3,6 +3,7 @@ from .models import Profile, Project, Skill, Experience, Education, Message
 from pprint import pprint
 import sys
 import pprint
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -43,9 +44,29 @@ def projects(request):
 def blogs(request):
     return render(request, 'blogs.html')
 
-def contact(request):
-    return render(request, 'contact.html')
+from django.http import JsonResponse
+from .models import Message
 
+def contact(request):
+    if request.method == "POST" and request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        number = request.POST.get("number")
+        message = request.POST.get("message")
+
+        # Save message to DB
+        Message.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            number=number,
+            message=message,
+        )
+
+        return JsonResponse({"success": True})
+
+    return render(request, 'contact.html')
 
 def profile_view(request):
     profile = Profile.objects.first()
