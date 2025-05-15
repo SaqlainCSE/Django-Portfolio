@@ -1,33 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Experience{% endblock %}
+{% block title %}Education{% endblock %}
 
 {% block content %}
 
-<section class="py-5 mt-5" style="background-color: #0d1117; color: #c9d1d9;" id="experience">
+<section class="py-5 mt-5" style="background-color: #0d1117; color: #c9d1d9;" id="education">
     <div class="container">
-        <h2 class="text-center fw-bold mb-5" style="color: #58a6ff;">My Experience</h2>
+        <h2 class="text-center fw-bold mb-5" style="color: #58a6ff;">My Education</h2>
 
         <div class="timeline-dark">
-            {% for exp in experiences %}
+            {% for edu in educations %}
             <div class="timeline-item">
                 <div class="timeline-dot {% cycle 'bg-blue' 'bg-green' 'bg-purple' 'bg-orange' %}"></div>
                 <div class="timeline-card glass-card">
-                    <h5 class="fw-bold">{{ exp.company }} - {{ exp.position }}</h5>
+                    <h5 class="fw-bold">{{ edu.degree }} - {{ edu.institution }}</h5>
                     <span class="text-muted">
-                        {{ exp.start_date }} – 
-                        {% if exp.end_date %}
-                            {{ exp.end_date }}
-                        {% else %}
-                            Present
-                        {% endif %}
+                        {{ edu.start_year }}{% if edu.end_year %} – {{ edu.end_year }}{% else %} – Present{% endif %}
                     </span>
-                    <p>{{ exp.description }}</p>
+                    <p>{{ edu.description }}</p>
                 </div>
             </div>
             {% empty %}
-            <p class="text-center">No experience records found.</p>
+            <p class="text-center">No education records found.</p>
             {% endfor %}
         </div>
     </div>

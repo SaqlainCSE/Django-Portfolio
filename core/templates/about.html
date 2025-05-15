@@ -1,95 +1,71 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>{% block title %} About {% endblock %}</title>
 </head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
 
-    <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80" >
-        
-        <!-- start about -->
-        <section class="section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 ms-auto align-self-center">
-                        <h5 class="fs-24 text-dark fw-medium mb-3"><mark>Personal Details</mark></h5>       
-                        <h4 class="fw-normal lh-base text-gray-700 mb-4 fs-20" style="text-align: justify;">
-                            {{ about.bio }}
-                        </h4>
-                        
-                        <div class="mb-5 mb-lg-0">
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Contact Number</span> 
-                                <span class="personal-detail-info"> {{ about.phone }}</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Email</span> 
-                                <span class="personal-detail-info"> {{ about.email }}</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Address</span> 
-                                <span class="personal-detail-info"> {{ about.address }}</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Date of Birth</span> 
-                                <span class="personal-detail-info"> {{ about.dob }}</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Spoken Languages</span> 
-                                <span class="personal-detail-info">{{ about.languages }}</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Nationality</span> 
-                                <span class="personal-detail-info">{{ about.nationality }}</span>
-                            </p>
-                        </div>
-                        <div class="social mt-5">
-                            <a href="{{ about.github_link }}" target="_blank">
-                                <i class="lab la-github github me-1"></i>
-                            </a>
-                            <a href="{{ about.linkedin_link }}" target="_blank">
-                                <i class="lab la-linkedin-in linkedin me-1"></i>
-                            </a>
-                            <a href="{{ about.instagram_link }}" target="_blank">
-                                <i class="lab la-instagram instagram me-1"></i>
-                            </a>
-                        </div>
-                    </div><!--end col-->
-                                    
-                    <div class="col-lg-5 align-self-center">
-                        <img src="{{ about.profile_image2.url }}" alt="" class="img-fluid ml-lg-5">
-                    </div><!--end col--> 
-                    
-                    <!-- Skills -->
-                    <div class="col-12 mt-5">
-                        <div class="d-flex flex-wrap justify-content-center mt-4 mt-md-5">
-                            {% for skill in skills %}
-                            <div class="mx-3 ms-sm-0 mb-3 card-bg rounded p-1 pe-3 p-md-3 pe-md-4 shadow-sm">
-                                <div class="d-flex align-items-center">
-                                    <div class="thumb-md d-flex justify-content-center align-items-center">
-                                        <img src="{{ skill.logo.url }}" alt="{{ skill.name }}" class="" height="34">
-                                    </div>
-                                    <div class="ms-3">
-                                        <h6 class="mb-0 fw-medium text-gray-700">{{ skill.name }}</h6>
-                                        <p class="text-muted mb-0 fs-12">{{ skill.experience }}</p>
-                                    </div>
-                                </div>
+    <!-- About Section -->
+    <section class="section py-5 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <!-- Text Column -->
+                <div class="col-lg-6 ms-auto mb-5 mb-lg-0">
+                    <h5 class="fs-4 fw-semibold text-info mb-3" style="color: #58a6ff;">👤 Personal Details</h5>
+                    <p class="lh-lg fs-6 mb-4" style="text-align: justify;">
+                        {{ about.bio }}
+                    </p>
+
+                    <div class="glass-card p-4 rounded-4 mb-4 shadow">
+                        <p class="mb-2"><strong>📞 Contact:</strong> <span class="text-muted">{{ about.phone }}</span></p>
+                        <p class="mb-2"><strong>✉️ Email:</strong> <span class="text-muted">{{ about.email }}</span></p>
+                        <p class="mb-2"><strong>📍 Address:</strong> <span class="text-muted">{{ about.address }}</span></p>
+                        <p class="mb-2"><strong>🎂 DOB:</strong> <span class="text-muted">{{ about.dob }}</span></p>
+                        <p class="mb-2"><strong>🗣️ Languages:</strong> <span class="text-muted">{{ about.languages }}</span></p>
+                        <p class="mb-0"><strong>🌍 Nationality:</strong> <span class="text-muted">{{ about.nationality }}</span></p>
+                    </div>
+
+                    <div class="social mt-4">
+                        <a href="{{ about.github_link }}" target="_blank" class="me-3 fs-4 text-light"><i class="lab la-github"></i></a>
+                        <a href="{{ about.linkedin_link }}" target="_blank" class="me-3 fs-4 text-primary"><i class="lab la-linkedin-in"></i></a>
+                        <a href="{{ about.instagram_link }}" target="_blank" class="fs-4 text-danger"><i class="lab la-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Image Column -->
+                <div class="col-lg-5">
+                    <div class="text-center">
+                        <img src="{{ about.profile_image2.url }}" alt="Profile Image" class="img-fluid rounded-4 shadow-lg" style="max-height: 400px;">
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="col-12 mt-5">
+                    <h5 class="fs-4 fw-semibold text-info text-center mb-4">🧠 Skills</h5>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        {% for skill in skills %}
+                        <div class="skill-card d-flex align-items-center rounded-3 p-3 shadow-sm">
+                            <img src="{{ skill.logo.url }}" alt="{{ skill.name }}" height="34" class="me-3">
+                            <div>
+                                <h6 class="mb-1">{{ skill.name }}</h6>
+                                <small class="text-muted">{{ skill.experience }}</small>
                             </div>
-                            {% endfor %}
                         </div>
-                    </div><!-- End Col -->
-                </div><!--end row--> 
-            </div><!-- end container -->
-        </section>
-        <!-- end about -->
+                        {% endfor %}
+                    </div>
+                </div>
 
-        <div class="position-relative">
+            </div>
+        </div>
+    </section>
+
+    <div class="position-relative">
             <div class="shape overflow-hidden bg-footer">
                 <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
@@ -97,7 +73,6 @@
             </div>
         </div>
 
-    </body>
+</body>
 </html>
-
 {% endblock %}

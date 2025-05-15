@@ -36,7 +36,13 @@ def services(request):
     return render(request, 'services.html')
 
 def experience(request):
-    return render(request, 'experience.html')
+    experiences = Experience.objects.all().order_by('-start_date')
+    return render(request, 'experience.html', {'experiences': experiences})
+
+def education(request):
+    educations = Education.objects.all().order_by('-start_year')
+    return render(request, 'education.html', {'educations': educations})
+
 
 def projects(request):
     return render(request, 'projects.html')

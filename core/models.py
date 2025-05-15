@@ -42,7 +42,6 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Experience(models.Model):
-    profile = models.ForeignKey(Profile, related_name='experiences', on_delete=models.CASCADE)
     company = models.CharField(max_length=150)
     position = models.CharField(max_length=150)
     start_date = models.DateField()
@@ -52,7 +51,6 @@ class Experience(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Education(models.Model):
-    profile = models.ForeignKey(Profile, related_name='education', on_delete=models.CASCADE)
     institution = models.CharField(max_length=150)
     degree = models.CharField(max_length=150)
     start_year = models.IntegerField()

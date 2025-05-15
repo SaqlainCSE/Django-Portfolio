@@ -16,6 +16,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
         
         <link href="{% static 'css/style-dark.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 
         <!-- colors -->
         <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" type="text/css" id="color-opt" />
@@ -40,6 +41,9 @@
                         </li><!--end nav-item-->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "about" %} ">About</a>
+                        </li><!--end nav-item-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "education" %}">Education</a>
                         </li><!--end nav-item-->                        
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "experience" %}">Experience</a>
