@@ -45,13 +45,11 @@ def education(request):
 
 
 def projects(request):
-    return render(request, 'projects.html')
+    project_list = Project.objects.all().order_by('-created_at')
+    return render(request, 'projects.html', {'projects': project_list})
 
 def blogs(request):
     return render(request, 'blogs.html')
-
-from django.http import JsonResponse
-from .models import Message
 
 def contact(request):
     if request.method == "POST" and request.headers.get('x-requested-with') == 'XMLHttpRequest':

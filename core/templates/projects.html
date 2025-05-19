@@ -1,105 +1,66 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block content %}
 
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />
     <title>{% block title %} Projects {% endblock %}</title>
 </head>
 
-    <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80" >
-        <!-- start projects -->
-        <section class="section">
-            <div class="container">     
-                <div class="row">                    
-                    <div class="col-12 filters-group-wrap">
-                        <div class="filters-group mb-5">                            
-                            <ul class="mb-0 list-unstyled filter-options filter-tab">
-                                <li class="list-inline-item position-relative text-dark active" data-group="all">All</li>
-                                <li class="list-inline-item position-relative text-dark" data-group="angular">Angular</li>
-                                <li class="list-inline-item position-relative text-dark" data-group="mongodb">Mongodb</li>
-                                <li class="list-inline-item position-relative text-dark" data-group="bootstrap">Bootstrap</li>
-                            </ul>
-                        </div>
-                    </div><!--end col-->
-                </div><!--end row-->
-                <div class="row d-flex  g-1 justify-content-center" id="grid">
-                    <div class="col-lg-4 col-md-6 picture-item" data-groups='["angular", "bootstrap"]'>
-                        <div class="card rounded shadow border-0 m-2">
-                            <div class="text-center bg-soft-alt-danger py-5 rounded">
-                                <img src="{% static 'images/logos/Angular.svg' %}" alt="" class="thumb-xl rounded">
-                            </div>
-                            <div class="card-body p-4 m-2">
-                                <h5 class="text-dark fs-18 fw-medium m-0">Farmer Project</h5>
-                                <p class="text-muted mb-0 fs-13">htpps://abcd-Example.com <a href="#"><i class="ti ti-external-link fs-18 text-primary"></i></a></p>
-                            </div><!-- end card-body -->
-                        </div><!-- end card -->
-                    </div><!-- end col -->
-                    <div class="col-lg-4 col-md-6 picture-item" data-groups='["bootstrap"]'>
-                        <div class="card rounded shadow border-0 m-2">
-                            <div class="text-center bg-soft-alt-info py-5 rounded">
-                                <img src="{% static 'images/logos/bootstrap.svg' %}" alt="" class="thumb-xl rounded">
-                            </div>
-                            <div class="card-body p-4 m-2">
-                                <h5 class="text-dark fs-18 fw-medium m-0">ID Scan Project</h5>
-                                <p class="text-muted mb-0 fs-13">htpps://abcd-Example.com <a href="#"><i class="ti ti-external-link fs-18 text-primary"></i></a></p>
-                            </div><!-- end card-body -->                            
-                        </div><!-- end card -->
-                    </div><!-- end col -->
-                    <div class="col-lg-4 col-md-6 picture-item" data-groups='["mongodb", "vue", "angular"]'>
-                        <div class="card rounded shadow border-0 m-2">
-                            <div class="text-center bg-soft-alt-success py-5 rounded">
-                                <img src="{% static 'images/logos/mongodb.svg' %}" alt="" class="thumb-xl rounded">
-                            </div>
-                            <div class="card-body p-4 m-2">
-                                <h5 class="text-dark fs-18 fw-medium m-0">Auto Drive Project</h5>
-                                <p class="text-muted mb-0 fs-13">htpps://abcd-Example.com <a href="#"><i class="ti ti-external-link fs-18 text-primary"></i></a></p>
-                            </div><!-- end card-body -->                            
-                        </div><!-- end card -->
-                    </div><!-- end col --> 
-                    <div class="col-lg-4 col-md-6 picture-item" data-groups='["vue"]'>
-                        <div class="card rounded shadow border-0 m-2">
-                            <div class="text-center bg-soft-alt-success py-5 rounded">
-                                <img src="{% static 'images/logos/vue.svg' %}" alt="" class="thumb-xl rounded">
-                            </div>
-                            <div class="card-body p-4 m-2">
-                                <h5 class="text-dark fs-18 fw-medium m-0">Health Application</h5>
-                                <p class="text-muted mb-0 fs-13">htpps://abcd-Example.com <a href="#"><i class="ti ti-external-link fs-18 text-primary"></i></a></p>
-                            </div><!-- end card-body --> 
-                        </div><!-- end card -->
-                    </div><!-- end col -->
-                    <div class="col-lg-4 col-md-6 picture-item" data-groups='["react", "angular"]'>
-                        <div class="card rounded shadow border-0 m-2">
-                            <div class="text-center bg-soft-alt-primary py-5 rounded">
-                                <img src="{% static '' %}images/logos/react.svg" alt="" class="thumb-xl rounded">
-                            </div>
-                            <div class="card-body p-4 m-2">
-                                <h5 class="text-dark fs-18 fw-medium m-0">eCommerce Project</h5>
-                                <p class="text-muted mb-0 fs-13">htpps://abcd-Example.com <a href="#"><i class="ti ti-external-link fs-18 text-primary"></i></a></p>
-                            </div><!-- end card-body -->                             
-                        </div><!-- end card -->
-                    </div><!-- end col -->                    
-                </div><!-- end row -->
-            </div><!-- end container -->
-        </section>
-        <!-- end projects -->
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
 
-        <div class="position-relative">
-            <div class="shape overflow-hidden bg-footer">
-                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
-                </svg>
-            </div>
-        </div>
-         
-    </body>
+<!-- start projects -->
+<section class="section">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5 mt-5" style="color: #58a6ff;">My Projects</h2>
 
+        <div class="row g-4 justify-content-center" id="grid">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6 picture-item" data-groups='["{{ project.category|lower }}"]'>
+                <div class="card shadow-sm border-0 h-100 position-relative">
+                    <div class="bg-light text-center py-5 rounded-top position-relative">
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-thumb">
+                        {% else %}
+                            <img src="{% static 'images/programmer-workstation_1320745-11466.jpg' %}" alt="No Image" class="project-thumb">
+                        {% endif %}
+
+                        <div class="category-badge">{{ project.category }}</div>
+                    </div>
+                    <div class="card-body bg-white px-4 py-3">
+                        <h5 class="text-dark fw-semibold">{{ project.title }}</h5>
+                        <p class="text-muted mb-0 fs-13">
+                            {% if project.demo_link %}
+                                <a href="{{ project.demo_link }}" target="_blank" class="project-link text-decoration-none">
+                                    {{ project.demo_link|truncatechars:35 }}
+                                    <i class="ti ti-external-link fs-5 ms-1 text-primary"></i>
+                                </a>
+                            {% else %}
+                                <span class="text-secondary">No link provided</span>
+                            {% endif %}
+                        </p>
+                    </div><!-- end card-body -->
+                </div><!-- end card -->
+            </div><!-- end col -->
+            {% endfor %}
+        </div><!-- end row -->
+        
+    </div><!-- end container -->
+</section>
+<!-- end projects -->
+
+<div class="position-relative">
+    <div class="shape overflow-hidden bg-footer">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+
+</body>
 </html>
 
 {% endblock %}

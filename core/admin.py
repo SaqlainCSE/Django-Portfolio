@@ -28,4 +28,8 @@ admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Message, MessageAdmin)
 
+admin.site.site_header = "Admin Panel"
+admin.site.site_title = "Admin Panel"
+admin.site.index_title = "Welcome to the Admin Panel"
+
 

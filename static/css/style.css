@@ -84,3 +84,57 @@
             padding: 1rem;
         }
     }
+
+    .project-thumb {
+            transition: transform 0.4s ease;
+            max-height: 120px;
+            object-fit: contain;
+        }
+
+        .card:hover .project-thumb {
+            transform: scale(1.1);
+        }
+
+        .card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border-radius: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        }
+
+        .category-badge {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: #58a6ff;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .project-link i {
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover i {
+            color: #0069d9;
+        }
+
+        .filter-tab li {
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0.4rem 1rem;
+            border-radius: 0.4rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .filter-tab li.active,
+        .filter-tab li:hover {
+            background-color: #58a6ff;
+            color: white !important;
+        }
