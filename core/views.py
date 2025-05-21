@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Profile, Project, Skill, Experience, Education, Message
+from .models import Profile, Project, Skill, Experience, Education, Message, Certificate
 from pprint import pprint
 import sys
 import pprint
@@ -47,6 +47,10 @@ def education(request):
 def projects(request):
     project_list = Project.objects.all().order_by('-created_at')
     return render(request, 'projects.html', {'projects': project_list})
+
+def certificate_list(request):
+    certificates = Certificate.objects.all().order_by('-created_at')
+    return render(request, 'certificates.html', {'certificates': certificates})
 
 def blogs(request):
     return render(request, 'blogs.html')

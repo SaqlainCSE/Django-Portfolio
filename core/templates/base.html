@@ -37,34 +37,32 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
                         <li class="nav-item">
-                            <a class="nav-link active" href="{% url "home" %}">Home</a>
-                        </li><!--end nav-item-->
+                            <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "about" %} ">About</a>
-                        </li><!--end nav-item-->
+                            <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "education" %}">Education</a>
-                        </li><!--end nav-item-->                        
+                            <a class="nav-link {% if request.resolver_match.url_name == 'education' %}active{% endif %}" href="{% url 'education' %}">Education</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "experience" %}">Experience</a>
-                        </li><!--end nav-item-->
+                            <a class="nav-link {% if request.resolver_match.url_name == 'experience' %}active{% endif %}" href="{% url 'experience' %}">Experience</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "projects" %}">Projects</a>
-                        </li><!--end nav-item-->
+                            <a class="nav-link {% if request.resolver_match.url_name == 'projects' %}active{% endif %}" href="{% url 'projects' %}">Projects</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Certificates</a>
-                        </li><!--end nav-item-->
-                        {% comment %} <li class="nav-item">
-                            <a class="nav-link" href="{% url "blogs" %}">Blogs</a>
-                        </li><!--end nav-item--> {% endcomment %}
+                            <a class="nav-link {% if request.resolver_match.url_name == 'certificates' %}active{% endif %}" href="{% url 'certificates' %}">Certificates</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "services" %}">Services</a>
-                        </li><!--end nav-item-->
+                            <a class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">Services</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url "contact" %}">Contact</a>
-                        </li><!--end nav-item-->
-                    </ul><!--end navbar-nav-->
-                    <a href="{% url 'contact' %}" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Hire Me! <i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>
+                            <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                    <!--end navbar-nav-->
+                        <a href="{% url 'contact' %}" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Hire Me! <i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>
                 </div><!-- end #navbarNav -->
             </div><!-- end container -->
         </nav>
@@ -115,7 +113,7 @@
                                 <ul class="list-unstyled footer-list">
                                     <li><a href="{% url 'experience' %}">Experience</a></li>
                                     <li><a href="{% url 'projects' %}">Projects</a></li>
-                                    <li><a href="">Certificates</a></li>                                    
+                                    <li><a href="{% url 'certificates' %}">Certificates</a></li>                                    
                                     
                                 </ul>
                             </div><!-- end col -->

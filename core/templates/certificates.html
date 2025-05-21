@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %} Certificates {% endblock %}</title>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
+
+<!-- start certificates -->
+<section class="section py-5 mt-5">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5" style="color: #58a6ff;">My Certificates</h2>
+
+        <div class="row g-4 justify-content-center" id="grid">
+            {% for certificate in certificates %}
+            <div class="col-lg-4 col-md-6 picture-item" data-groups='["{{ certificate.category|lower }}"]'>
+                <div class="card shadow-sm border-0 h-100 position-relative">
+                    <div class="bg-light text-center rounded-top position-relative">
+                        {% if certificate.image %}
+                            <img src="{{ certificate.image.url }}" alt="{{ certificate.title }}" class="certificate-thumb" style="width: 350px; height: 260px;">
+                        {% else %}
+                            <img src="{% static 'images/programmer-workstation_1320745-11466.jpg' %}" alt="No Image" class="certificate-thumb">
+                        {% endif %}
+
+                        <div class="category-badge">{{ certificate.category }}</div>
+                    </div>
+                    <div class="card-body bg-white px-4 py-3">
+                        <p>{{ certificate.description }}</p>
+                        <h5 class="text-dark fw-semibold">{{ certificate.title }}</h5>
+                    </div><!-- end card-body -->
+                </div><!-- end card -->
+            </div><!-- end col -->
+            {% endfor %}
+        </div><!-- end row -->
+        
+    </div><!-- end container -->
+</section>
+<!-- end certificates -->
+
+<div class="position-relative">
+    <div class="shape overflow-hidden bg-footer">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+
+</body>
+</html>
+
+{% endblock %}

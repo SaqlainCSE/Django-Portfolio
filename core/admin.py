@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Skill, Project, Experience, Education, Message
+from .models import Profile, Skill, Project, Experience, Education, Message, Certificate
 
 # Register your models here.
 
@@ -20,6 +20,9 @@ class EducationAdmin(admin.ModelAdmin):
 
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'number', 'subject', 'message', 'created_at', 'updated_at')
+    
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'image', 'created_at', 'updated_at')
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Skill, SkillAdmin)
@@ -27,6 +30,7 @@ admin.site.register(Project, ProjectAdmin)
 admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Message, MessageAdmin)
+admin.site.register(Certificate, CertificateAdmin)
 
 admin.site.site_header = "Admin Panel"
 admin.site.site_title = "Admin Panel"
