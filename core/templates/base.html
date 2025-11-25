@@ -60,11 +60,11 @@
                             <a class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}" href="{% url 'services' %}">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                            {% comment %} <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">Contact</a> {% endcomment %}
                         </li>
                     </ul>
                     <!--end navbar-nav-->
-                        <a href="{% url 'contact' %}" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Hire Me! <i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>
+                        <a href="{% url 'contact' %}" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Contact Me<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>
                 </div><!-- end #navbarNav -->
             </div><!-- end container -->
         </nav>

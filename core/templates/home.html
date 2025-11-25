@@ -24,27 +24,27 @@
                         <img src="{{ about.profile_image.url }}" alt="" class="img-fluid ml-lg-5">
                     </div><!--end col--> 
                     <div class="col-lg-7 text-center px-0 px-xl-4 mt-5 mt-lg-0 pt-5 pt-lg-0">
-                        <h5 class="d-inline-block py-1 px-3 rounded text-muted font-secondary">Hi, I'm {{ about.full_name }}</h5>
-                        <h1 class="hero-title mb-4 font-secondary fo">I'm a {{ about.title }} 
-                            <div class="position-relative d-inline-block" style="margin-bottom: -20px;" data-delay="2200" data-words>
-								&nbsp;
-								<span class="text-anim-items">
-									<span class="text-anim-item px-2"><span>Laravel</span></span>
-									<span class="text-anim-item px-2"><span>Django </span></span>
-                                    <span class="text-anim-item px-2"><span>Python</span></span>
-                                    <span class="text-anim-item px-2"><span>PHP</span></span>
-                                    <span class="text-anim-item px-2"><span>FastAPI</span></span>
-                                    <span class="text-anim-item px-2"><span>Vue.js </span></span>
-                                    <span class="text-anim-item px-2"><span>Node.js </span></span>
-                                    <span class="text-anim-item px-2"><span>MySQL</span></span>
-                                    <span class="text-anim-item px-2"><span>SQLite</span></span>
-                                    <span class="text-anim-item px-2"><span>PGSql</span></span>
-								</span>
-								<span class="anim-line bg-orange"></span>
-							</span>
-                        </div> 
-                            Developer
-                        </h1>   
+                        <h2 class="d-inline-block py-1 px-3 rounded text-warning font-secondary">Hi, I'm {{ about.full_name }}</h2>
+                            <h4 class="hero-title mb-4 font-secondary fo">A {{ about.title }} 
+                                <div class="position-relative d-inline-block" style="margin-bottom: -20px;" data-delay="2200" data-words>
+                                        &nbsp;
+                                        <span class="text-anim-items">
+                                            <span class="text-anim-item px-2"><span>Laravel</span></span>
+                                            <span class="text-anim-item px-2"><span>Django </span></span>
+                                            <span class="text-anim-item px-2"><span>Python</span></span>
+                                            <span class="text-anim-item px-2"><span>PHP</span></span>
+                                            <span class="text-anim-item px-2"><span>FastAPI</span></span>
+                                            <span class="text-anim-item px-2"><span>Vue.js </span></span>
+                                            <span class="text-anim-item px-2"><span>Node.js </span></span>
+                                            <span class="text-anim-item px-2"><span>MySQL</span></span>
+                                            <span class="text-anim-item px-2"><span>SQLite</span></span>
+                                            <span class="text-anim-item px-2"><span>PGSql</span></span>
+                                        </span>
+                                        <span class="anim-line bg-orange"></span>
+                                    </span>
+                                </div> 
+                                Developer
+                            </h4>   
                         <span class="wrap"></span>                     
                         <div class="mb-5 mb-lg-0">                           
                             <div class="d-inline-block">
@@ -95,9 +95,9 @@
                             <p><strong>📞 Contact:</strong> <span class="text-muted">{{ about.phone }}</span></p>
                             <p><strong>✉️ Email:</strong> <span class="text-muted">{{ about.email }}</span></p>
                             <p><strong>📍 Address:</strong> <span class="text-muted">{{ about.address }}</span></p>
-                            <p><strong>🎂 Date of Birth:</strong> <span class="text-muted">{{ about.dob }}</span></p>
+                            {% comment %} <p><strong>🎂 Date of Birth:</strong> <span class="text-muted">{{ about.dob }}</span></p> {% endcomment %}
                             <p><strong>🗣️ Languages:</strong> <span class="text-muted">{{ about.languages }}</span></p>
-                            <p><strong>🌍 Nationality:</strong> <span class="text-muted">{{ about.nationality }}</span></p>
+                            {% comment %} <p><strong>🌍 Nationality:</strong> <span class="text-muted">{{ about.nationality }}</span></p> {% endcomment %}
                         </div>
                     </div>
                 </div>
@@ -278,15 +278,16 @@
                         </p>
                     </div><!--end col-->
                 </div><!--end row-->
+
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
                         <div class="card rounded shadow border-0">
                             <div class="card-body p-4 m-2">
                                 <div class="bg-soft-alt-orange d-flex justify-content-center align-items-center thumb-xl  rounded">
-                                    <i data-feather="layers" class="align-self-center svg-orange icon-md"></i>  
+                                    <i data-feather="code" class="align-self-center svg-orange icon-md"></i>  
                                 </div>
-                                <h5 class="text-dark fs-22 fw-medium my-4">Awesome Support</h5>
-                                <p class="text-muted pb-4">Some quick example text to build on the card title and make up the bulk of the card's content platform.</p>
+                                <h5 class="text-dark fs-22 fw-medium my-4">Software Development</h5>
+                                <p class="text-muted pb-4">Building custom software solutions to solve complex business problems efficiently and reliably.</p>
                             </div><!-- end card-body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
@@ -294,10 +295,10 @@
                         <div class="card rounded shadow  border-0">
                             <div class="card-body p-4 m-2">
                                 <div class="bg-soft-alt-info d-flex justify-content-center align-items-center thumb-xl  rounded">
-                                    <i data-feather="dollar-sign" class="align-self-center svg-info icon-md"></i>  
+                                    <i data-feather="layout" class="align-self-center svg-info icon-md"></i>  
                                 </div>
-                                <h5 class="text-dark fs-22 fw-medium my-4">Dynamic Growth</h5>
-                                <p class="text-muted pb-4">Credibly brand standards compliant users without extensible services. Anibh euismod tincidunt.</p>
+                                <h5 class="text-dark fs-22 fw-medium my-4">Web Development</h5>
+                                <p class="text-muted pb-4">Creating responsive, modern, and user-friendly websites that engage visitors and drive results.</p>
                             </div><!-- end card-body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
@@ -305,14 +306,88 @@
                         <div class="card rounded shadow  border-0">
                             <div class="card-body p-4 m-2">
                                 <div class="bg-soft-alt-success d-flex justify-content-center align-items-center thumb-xl  rounded">
-                                    <i data-feather="check-square" class="align-self-center svg-success icon-md"></i>  
+                                    <i data-feather="shopping-cart" class="align-self-center svg-success icon-md"></i>  
                                 </div>
-                                <h5 class="text-dark fs-22 fw-medium my-4">Branding Identity</h5>
-                                <p class="text-muted pb-4">Separated they live in Bookmarksgrove right at the coast of the Semantics, and large.</p>
+                                <h5 class="text-dark fs-22 fw-medium my-4">E-Commerce Development</h5>
+                                <p class="text-muted pb-4">Developing secure and scalable e-commerce platforms that boost online sales and customer satisfaction.</p>
                             </div><!-- end card-body -->
                         </div><!-- end card -->
                     </div><!-- end col -->
-                </div><!-- end row -->
+                    <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-warning d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="code" class="align-self-center svg-warning icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">App Development</h5>
+                            <p class="text-muted pb-4">We build scalable and robust mobile and web applications tailored to your business.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-pink d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="activity" class="align-self-center svg-pink icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">QA Testing & Automation</h5>
+                            <p class="text-muted pb-4">Automated testing to ensure your applications are bug-free and high-performing.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-dark d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="layout" class="align-self-center svg-dark icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">Web Design</h5>
+                            <p class="text-muted pb-4">Creative and responsive web designs that engage users and boost conversions.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-dark d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="database" class="align-self-center svg-dark icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">Database Design</h5>
+                            <p class="text-muted pb-4">Efficient and secure database structures optimized for your applications.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-dark d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="cpu" class="align-self-center svg-dark icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">ERP Development</h5>
+                            <p class="text-muted pb-4">Custom ERP solutions to streamline business processes and enhance productivity.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card rounded shadow border-0">
+                        <div class="card-body p-4 m-2">
+                            <div class="bg-soft-alt-dark d-flex justify-content-center align-items-center thumb-xl rounded">
+                                <i data-feather="book-open" class="align-self-center svg-dark icon-md"></i>  
+                            </div>
+                            <h5 class="text-dark fs-22 fw-medium my-4">LMS Development</h5>
+                            <p class="text-muted pb-4">Learning Management Systems designed to improve training and knowledge management.</p>
+                        </div><!-- end card-body -->
+                    </div><!-- end card -->
+                </div><!-- end col -->
+            </div>
+                </div>
+
+                <!-- end row -->
             </div><!-- end container -->
         </section>
         <!-- end services -->
